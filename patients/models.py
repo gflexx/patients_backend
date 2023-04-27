@@ -47,8 +47,8 @@ class PatientRecords(models.Model):
     )
     taking_drugs = models.BooleanField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['-created']
         verbose_name_plural = 'Patient Records'
-

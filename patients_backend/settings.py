@@ -1,8 +1,12 @@
 from pathlib import Path
+import json
+
+with open('config.json') as config_file:
+	config = json.load(config_file)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-8$)*^$ian^z@p(@v$r(4v@r*f@b5#e=d53@n+z#c)c6emlpey='
+SECRET_KEY = config["SECRET_KEY"]
 
 DEBUG = True
 
@@ -61,8 +65,12 @@ WSGI_APPLICATION = 'patients_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config["DB_NAME"],
+        'USER': config["DB_USER"],
+        'PASSWORD': config["DB_PASSWORD"],
+        'HOST': config["DB_HOST"],
+        'PORT': config["DB_PORT"],
     }
 }
 

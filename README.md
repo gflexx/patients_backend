@@ -4,7 +4,9 @@ Django backend system for saving patient data and reports
 Pull or clone from git then to install required packages, go to the project directory and enter:
 ### pip install -r requirements.txt
 This will install required packages.
-After installing create migrations
+## The project requires postgres db to be already installed
+Install postgres, create the user then create the database table
+After creating the tables create migrations
 ### python manage.py makemigrations
 Migrate to database
 ### python manage.py migrate
